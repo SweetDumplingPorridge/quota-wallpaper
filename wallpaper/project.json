@@ -1,0 +1,38 @@
+{
+  "title": "Quota Wallpaper | Codex & DeepSeek 额度监控",
+  "description": "可自定义的时间、Codex 额度、DeepSeek 余额和消耗统计网页壁纸。支持多账号、分层设色、5h/24h/7day/30day 统计、横竖屏自适应、背景选择和低资源模式。自动读取本地登录需要可选采集器；纯 Web 模式支持手填 DeepSeek API key。源码与安装说明见发布者的 GitHub 仓库。",
+  "type": "web",
+  "version": 0,
+  "file": "index.html",
+  "preview": "preview.png",
+  "visibility": "private",
+  "contentrating": "Everyone",
+  "tags": ["Technology"],
+  "general": {
+    "properties": {
+      "theme": { "order": 1, "text": "主题", "type": "combo", "value": "dark", "options": [{"label":"深色","value":"dark"},{"label":"浅色","value":"light"}] },
+      "accent": { "order": 2, "text": "强调色", "type": "color", "value": "0.470588 0.87451 0.8" },
+      "background": { "order": 3, "text": "背景图片", "type": "file", "value": "", "fileType": "image" },
+      "backgroundfit": { "order": 4, "text": "背景填充方式", "type": "combo", "value": "cover", "options": [{"label":"裁切铺满","value":"cover"},{"label":"完整显示","value":"contain"},{"label":"拉伸","value":"fill"}] },
+      "backgrounddim": { "order": 5, "text": "背景压暗", "type": "slider", "value": 15, "min": 0, "max": 90 },
+      "opacity": { "order": 6, "text": "面板不透明度", "type": "slider", "value": 84, "min": 10, "max": 100 },
+      "blur": { "order": 7, "text": "面板模糊", "type": "slider", "value": 16, "min": 0, "max": 40 },
+      "scale": { "order": 8, "text": "整体缩放", "type": "slider", "value": 1, "min": 0.5, "max": 2, "step": 0.05, "precision": 2 },
+      "positionx": { "order": 9, "text": "水平位置", "type": "slider", "value": 50, "min": 0, "max": 100 },
+      "positiony": { "order": 10, "text": "垂直位置", "type": "slider", "value": 50, "min": 0, "max": 100 },
+      "panelwidth": { "order": 11, "text": "面板宽度", "type": "slider", "value": 1160, "min": 400, "max": 2000 },
+      "fontsize": { "order": 12, "text": "基础字号", "type": "slider", "value": 14, "min": 10, "max": 24 },
+      "layout": { "order": 13, "text": "布局", "type": "combo", "value": "dashboard", "options": [{"label":"完整仪表盘","value":"dashboard"},{"label":"紧凑","value":"compact"},{"label":"仅时间与账号","value":"minimal"}] },
+      "lowresource": { "order": 14, "text": "低资源模式", "type": "bool", "value": true },
+      "showclock": { "order": 15, "text": "显示时间", "type": "bool", "value": true },
+      "showseconds": { "order": 16, "text": "显示秒钟（关闭低资源模式后有效）", "type": "bool", "value": false },
+      "showaccounts": { "order": 17, "text": "显示账号", "type": "bool", "value": true },
+      "showtotals": { "order": 18, "text": "显示汇总", "type": "bool", "value": true },
+      "showchart": { "order": 19, "text": "显示统计图", "type": "bool", "value": true },
+      "metric": { "order": 20, "text": "统计指标", "type": "combo", "value": "tokens", "options": [{"label":"Token 消耗","value":"tokens"},{"label":"费用估算","value":"spend"},{"label":"额度变化","value":"quota"}] },
+      "charttype": { "order": 21, "text": "图表样式", "type": "combo", "value": "bar", "options": [{"label":"柱状图","value":"bar"},{"label":"折线图","value":"line"}] },
+      "horizon": { "order": 22, "text": "统计时间范围", "type": "combo", "value": "86400000", "options": [{"label":"过去 5h","value":"18000000"},{"label":"过去 24h","value":"86400000"},{"label":"过去 7day","value":"604800000"},{"label":"过去 30day","value":"2592000000"}] },
+      "refreshseconds": { "order": 23, "text": "数据刷新间隔（秒）", "type": "slider", "value": 300, "min": 60, "max": 3600 }
+    }
+  }
+}

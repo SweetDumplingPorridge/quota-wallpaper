@@ -1,0 +1,10 @@
+node_modules/
+dist/
+artifacts/
+.tmp/
+wallpaper/app.js
+wallpaper/live.json
+wallpaper/connection.json
+*.private.json
+.env*
+!.env.example

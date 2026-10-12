@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quota Wallpaper · 额度监控壁纸</title><link rel="icon" href="data:,"><link rel="stylesheet" href="styles.css"></head>
+<body><div id="background" aria-hidden="true"></div><div class="ambient-grid" aria-hidden="true"></div>
+<main id="board">
+  <header class="clock-block" id="clock-block"><div class="eyebrow"><span class="tiny-orbit"></span> QUOTA / PERSONAL OBSERVATORY</div><div id="clock" aria-label="系统时间">—</div><div id="date"></div></header>
+  <section class="dashboard" aria-label="额度与余额监控"><header class="dashboard-header"><div><div class="eyebrow">RESOURCE OVERVIEW</div><h1>工作，心中有数<span class="accent-dot">.</span></h1></div><div class="header-tools"><span id="source-badge" class="badge">等待数据</span><button id="refresh" aria-label="立即刷新" title="立即刷新">↻</button><button id="settings-open" aria-label="设置" title="设置">⚙</button></div></header>
+  <div id="demo-banner" hidden>演示数据 · 与你的实际账号无关</div>
+  <div id="accounts" class="accounts"></div><div id="empty-state" hidden><h2>让数据找到它的位置</h2><p>在设置中填写 DeepSeek API key，导入统计文件，或开启本地采集器。</p><button id="empty-settings">配置数据来源</button></div>
+  <div id="totals" class="totals"></div>
+  <section id="chart-section"><div class="chart-heading"><div><div class="eyebrow">ACTIVITY / 消耗统计</div><h2 id="chart-title">Token 消耗</h2></div><div class="range-controls" aria-label="统计时间范围"><button data-horizon="18000000">5h</button><button data-horizon="86400000">24h</button><button data-horizon="604800000">7day</button><button data-horizon="2592000000">30day</button></div></div><div class="chart-filter"><select id="chart-account" aria-label="统计账号"><option value="all">全部账号</option></select><span id="chart-unit"></span></div><div id="chart"></div><div id="chart-legend"></div><p id="chart-note"></p></section>
+  <footer><span class="status-dot"></span><span id="status">尚未采集</span><span id="updated"></span></footer>
+  </section><div class="signature">LOCAL FIRST <span>✦</span> YOUR OWN RHYTHM</div>
+</main>
+<div id="settings-overlay" hidden><aside id="settings-panel" aria-label="壁纸设置"><header><div><div class="eyebrow">MAKE IT YOURS</div><h2>壁纸设置</h2></div><button id="settings-close" aria-label="关闭设置">×</button></header><nav class="tabs"><button data-tab="appearance" class="active">外观</button><button data-tab="data">数据与账号</button><button data-tab="statistics">统计</button></nav><div id="settings-content"></div><div class="settings-bottom"><button id="export-config">导出设置</button><label class="file-button">导入设置<input id="import-config" type="file" accept=".json" hidden></label><button id="reset-config">恢复外观</button></div><p id="settings-message" role="status"></p></aside></div>
+<script src="app.js"></script></body></html>
