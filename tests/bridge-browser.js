@@ -1,4 +1,5 @@
 import { chromium } from 'playwright';
+import { choose } from './choose.js';
 import assert from 'node:assert/strict';
 import { createServer } from '../collector/server.js';
 import { demoData } from '../src/demo.js';
@@ -35,7 +36,7 @@ try {
   const { readFile } = await import('node:fs/promises');
   const exported = await readFile(await file.path(),'utf8');
   assert.equal(exported.includes(token),false); assert.equal(exported.includes('fixture-key'),false);
-  await page.locator('#add-provider').selectOption('codex'); await page.locator('#add-account').click();
+  await choose(page, 'add-provider', 'codex'); await page.locator('#add-account').click();
   await page.locator('#account-2-codexHome').fill('C:/isolated-codex-home');
   await page.locator('#account-2-plan').fill('Pro');
   await page.locator('#save-accounts').click();

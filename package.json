@@ -15,7 +15,7 @@
     "collect": "node collector/main.js --once",
     "preview": "node scripts/preview.js",
     "package": "node scripts/package.js",
-    "test:browser": "node tests/browser.js && node tests/bridge-browser.js && node tests/properties-browser.js"
+    "test:browser": "node tests/browser.js && node tests/bridge-browser.js && node tests/properties-browser.js && node tests/choices-browser.js"
   },
   "dependencies": {
     "yaml": "2.9.1"
