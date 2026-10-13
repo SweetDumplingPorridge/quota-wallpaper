@@ -2,6 +2,8 @@
 
 可高度自定义的 **Wallpaper Engine 网页壁纸**：系统时间、Codex 订阅额度、DeepSeek 钱包与多账号消耗统计。
 
+[下载壁纸与源码发布包](https://github.com/SweetDumplingPorridge/quota-wallpaper/releases) · [验证记录](docs/VERIFICATION.md)
+
 ![演示预览](wallpaper/preview.png)
 
 ## 能做什么
