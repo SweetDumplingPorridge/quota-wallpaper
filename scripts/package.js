@@ -29,5 +29,6 @@ web['README.txt'] = new TextEncoder().encode('Quota Wallpaper\nImport index.html
 await mkdir('dist', { recursive: true });
 await writeFile('dist/quota-wallpaper-web.zip', zipSync(web, { level: 6 }));
 await writeFile('dist/quota-wallpaper-source.zip', zipSync(source, { level: 6 }));
-await writeFile('dist/release-manifest.json', JSON.stringify({ version: '0.1.0', generatedAt: new Date().toISOString(), source: manifest, web: Object.keys(web) }, null, 2));
+const { version } = JSON.parse(await readFile('package.json', 'utf8'));
+await writeFile('dist/release-manifest.json', JSON.stringify({ version, generatedAt: new Date().toISOString(), source: manifest, web: Object.keys(web) }, null, 2));
 console.log(`Release archives ready: ${Object.keys(source).length} source files, ${Object.keys(web).length} Web files; private data excluded.`);

@@ -84,6 +84,13 @@ async function codexCommand(explicit) {
   throw new Error('找不到 Codex CLI，请安装或配置 codexCommand');
 }
 
+export async function readCodexSession(request, account = {}) {
+  // This endpoint checks ChatGPT authentication itself. account/read performs
+  // workspace routing discovery on newer clients and can fail independently.
+  const limits = await request('account/rateLimits/read');
+  return normalizeCodex(limits, { ...account, id: account.id || 'codex-auto', name: account.name || 'Codex · 本机' });
+}
+
 export async function readCodex(account = {}) {
   const home = account.codexHome || process.env.CODEX_HOME || join(homedir(), '.codex');
   const executable = await codexCommand(account.codexCommand);
@@ -109,12 +116,9 @@ export async function readCodex(account = {}) {
   try {
     await request('initialize', { clientInfo: { name: 'quota_wallpaper', title: 'Quota Wallpaper', version: '0.1.0' }, capabilities: { experimentalApi: true } });
     proc.stdin.write(JSON.stringify({ method: 'initialized', params: {} }) + '\n');
-    const acct = await request('account/read', { refreshToken: false });
-    if (acct?.account?.type !== 'chatgpt' && acct?.account?.type !== 'chatgptAuthTokens') throw new Error('此 Codex 配置未登录 ChatGPT 订阅账户');
-    const limits = await request('account/rateLimits/read');
     let identity;
     try { const auth = JSON.parse(await readFile(join(home, 'auth.json'), 'utf8')); if (auth.tokens?.account_id) identity = fingerprint(auth.tokens.account_id); } catch { /* Keychain-backed homes still work through app-server. */ }
-    const result = normalizeCodex(limits, { ...account, id: account.id || 'codex-auto', name: account.name || 'Codex · 本机', plan: acct.account.planType, identity });
+    const result = await readCodexSession(request, { ...account, identity });
     try { const usage = await request('account/usage/read'); result.dailyUsage = (usage.dailyUsageBuckets || []).slice(-31).map(v => ({ startDate: v.startDate, tokens: v.tokens })); } catch { /* Daily analytics are optional, local logs provide detailed bins. */ }
     return result;
   } finally {
