@@ -1,5 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { isPublicFile as includesPublicAsset } from '../scripts/release-files.js';
+
+test('source package contains the windowless Windows supervisor launcher', () => {
+  assert.equal(includesPublicAsset('scripts/windows/Launch-CollectorHidden.vbs'), true);
+});
 const pack = await import('../scripts/release-files.js').catch(() => ({}));
 test('release allowlist rejects private snapshots, connections and runtime data', () => {
   assert.equal(typeof pack.isPublicFile, 'function');

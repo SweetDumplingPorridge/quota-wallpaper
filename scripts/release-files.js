@@ -4,7 +4,7 @@ export function isPublicFile(path) {
   path = path.replace(/\\/g,'/');
   if(path.split('/').some(part=>part==='..'||part==='.'))return false;
   if (/(?:^|\/)(?:live|connection|credentials|auth|state|config)\.json$|\.private\.|(?:^|\/)\.env/.test(path)) return false;
-  return top.has(path) || web.has(path) || /^(?:src|collector|tests)\/[\w./-]+\.js$/.test(path) || /^scripts\/[\w/-]+\.(?:js|ps1|cmd)$/.test(path) || /^docs\/[\w/-]+\.md$/.test(path) || /^\.github\/workflows\/[\w-]+\.ya?ml$/.test(path);
+  return top.has(path) || web.has(path) || /^(?:src|collector|tests)\/[\w./-]+\.js$/.test(path) || /^scripts\/[\w/-]+\.(?:js|ps1|cmd|vbs)$/.test(path) || /^docs\/[\w/-]+\.md$/.test(path) || /^\.github\/workflows\/[\w-]+\.ya?ml$/.test(path);
 }
 export function assertNoSecrets(path, content) {
   if (path.endsWith('.png')) return;

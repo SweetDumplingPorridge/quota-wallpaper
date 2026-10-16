@@ -38,6 +38,14 @@ npm start
 
 可双击 `scripts/windows/start-collector.cmd`，也可运行 `scripts/windows/Start-Collector.ps1` 隐藏后台启动。后台 PID 记录在私有目录，使用 `Stop-Collector.ps1` 停止。
 
+Windows 下需要登录后自动启动、进程退出后自动恢复时，可手动运行：
+
+```powershell
+./scripts/windows/Install-CollectorSupervisor.ps1 -OutputFile "D:/wallpaper-project/live.json"
+```
+
+计划任务会在当前用户登录时启动，并每 5 分钟检查一次采集器。使用无窗口入口启动，不弹出 CMD 或 PowerShell 窗口。已有进程运行时不会重复启动；进程退出后，下次检查会重新启动。睡眠期间不会唤醒电脑，恢复后补跑检查。请把输出路径改为实际壁纸目录，并移除以前手动创建的登录启动快捷方式。卸载用 `Remove-CollectorSupervisor.ps1`；卸载不会停止当前采集器，如需停止，再运行 `Stop-Collector.ps1`。不要与下方的“定时采集后退出”任务同时启用。
+
 ### 定时采集后退出
 
 ```powershell
